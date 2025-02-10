@@ -134,7 +134,8 @@
         android:text="Login"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:backgroundTint="@color/jungleGreen" />
+        app:backgroundTint="@color/jungleGreen"
+        android:onClick="handleLogin" />
 
 <LinearLayout
     android:layout_width="350dp"

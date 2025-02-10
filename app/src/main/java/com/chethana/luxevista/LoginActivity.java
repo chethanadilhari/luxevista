@@ -22,4 +22,13 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
     }
+    public void handleLogin(View view) {
+        setContentView(R.layout.activity_home);
+        EdgeToEdge.enable(this);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.homeScreen), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
 }

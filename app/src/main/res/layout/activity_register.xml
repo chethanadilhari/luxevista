@@ -179,7 +179,7 @@
         android:buttonTint="@color/white"
         android:fontFamily="@font/custom_font_inter"
         android:letterSpacing="0.05"
-        android:textSize=""
+        android:textSize="15dp"
         android:text="I  read and agree to Terms and Conditions"
         android:textColor="@color/white" />
 
