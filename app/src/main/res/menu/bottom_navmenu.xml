@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item  android:id="@+id/home"
+        android:icon="@drawable/home_icon"
+        android:title="Home" />
+
+   <item android:id="@+id/rooms"
+    android:icon="@drawable/room_icon"
+    android:title="Rooms"/>
+
+<item android:id="@+id/services"
+    android:icon="@drawable/service_icon"
+    android:title="Services" />
+
+<item
+    android:id="@+id/bookings"
+    android:icon="@drawable/calendar_icon"
+    android:title="Bookings"/>
+
+</menu>

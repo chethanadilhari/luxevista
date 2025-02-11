@@ -102,9 +102,25 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/jungleGreen"
+        app:menu="@menu/bottom_navmenu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemActiveIndicatorStyle="@style/MenuItemIndicator"
+        app:shapeAppearanceOverlay="@style/TopCornerRound"/>
 </LinearLayout>

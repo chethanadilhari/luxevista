@@ -21,12 +21,13 @@
             android:id="@+id/roomName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
             android:padding="5dp"
             android:text="Room 1"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
