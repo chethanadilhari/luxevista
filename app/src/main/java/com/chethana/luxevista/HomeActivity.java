@@ -9,19 +9,49 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.widget.Button;
+import android.widget.LinearLayout;
+
+import com.chethana.luxevista.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
+
+    ActivityHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        LinearLayout homeNavButtons = findViewById(R.id.homeNavButtons);
 
         Button exploreButton = findViewById(R.id.exploreButton);
         Button servicesButton = findViewById(R.id.servicesButton);
         Button reservationsButton = findViewById(R.id.infoReservationsButton);
+
+        binding.bottomNavigationMenu.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.home:
+                    selectedButton(exploreButton);
+                    homeNavButtons.setVisibility(LinearLayout.VISIBLE);
+                    replaceFragment(new ExploreFragment());
+                    break;
+                case R.id.rooms:
+                    homeNavButtons.setVisibility(LinearLayout.GONE);
+                    replaceFragment(new RoomsMenuFragment());
+                    break;
+                case R.id.services:
+                    homeNavButtons.setVisibility(LinearLayout.GONE);
+                    replaceFragment(new ServiceMenuFragment());
+                    break;
+                case R.id.bookings:
+                    homeNavButtons.setVisibility(LinearLayout.GONE);
+                    replaceFragment(new reservationFragment());
+                    break;
+            }
+            return true;
+        });
 
         // initial stage loading
         replaceFragment(new ExploreFragment());
@@ -49,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         transaction.replace(R.id.fragmentContainer, fragment);
         transaction.commit();
     }

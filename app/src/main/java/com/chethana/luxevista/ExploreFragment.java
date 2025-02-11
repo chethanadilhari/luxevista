@@ -47,10 +47,10 @@ public class ExploreFragment extends Fragment {
         rooms.add(new Room("Room with Pool View", "https://i.ibb.co/Csb5GfsR/pool-view-room.jpg"));
 
         locations = new ArrayList<>();
-        locations.add(new Location("Tirta Gangga Water Palace", "https://i.ibb.co/39bTGmVF/tirta-gangga-water-palace-bali.jpg"));
-        locations.add(new Location("Typical Ancient Architecture Island ", "https://i.ibb.co/YFhKPbNN/typical-ancient-architecture-island-bali.jpg"));
-        locations.add(new Location("Kelingking Beach Nusa Penida Island", "https://i.ibb.co/fdsjv7YV/kelingking-beach-nusa-penida-island-bali.jpg"));
-        locations.add(new Location("Karangasem Water Temple Palace", "https://i.ibb.co/ZzNQcJYT/karangasem-water-temple-palace-bali.jpg"));
+        locations.add(new Location("Tirta Gangga Palace", "https://i.ibb.co/39bTGmVF/tirta-gangga-water-palace-bali.jpg"));
+        locations.add(new Location("Typical Ancient Island ", "https://i.ibb.co/YFhKPbNN/typical-ancient-architecture-island-bali.jpg"));
+        locations.add(new Location("Nusa Penida Island", "https://i.ibb.co/fdsjv7YV/kelingking-beach-nusa-penida-island-bali.jpg"));
+        locations.add(new Location("Karangasem Water Temple ", "https://i.ibb.co/ZzNQcJYT/karangasem-water-temple-palace-bali.jpg"));
         locations.add(new Location("Houses Cozy City", "https://i.ibb.co/8D6YKKvc/houses-cozy-city.jpg"));
         locations.add(new Location("Aigua Blava Bay", "https://i.ibb.co/mChMJkm0/aigua-blava-bay-bali.jpg"));
 
