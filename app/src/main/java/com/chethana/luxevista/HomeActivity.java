@@ -1,5 +1,6 @@
 package com.chethana.luxevista;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +13,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.chethana.luxevista.databinding.ActivityHomeBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        auth = FirebaseAuth.getInstance();
 
         LinearLayout homeNavButtons = findViewById(R.id.homeNavButtons);
 
@@ -48,6 +53,9 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.bookings:
                     homeNavButtons.setVisibility(LinearLayout.GONE);
                     replaceFragment(new reservationFragment());
+                    auth.signOut();
+                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    finish();
                     break;
             }
             return true;

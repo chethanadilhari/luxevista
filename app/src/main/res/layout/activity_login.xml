@@ -54,16 +54,22 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:background="@drawable/input_field">
+            android:textColor="@color/darkGreen"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/custom_font_inter"
+            >
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailInput"
+                android:id="@+id/login_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:background="@drawable/input_field"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -79,16 +85,21 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:background="@drawable/input_field">
+            >
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:background="@drawable/input_field"
+                android:textColor="@color/darkGreen"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/custom_font_inter"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
@@ -126,7 +137,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/login_button"
         style="@style/RoundedButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -134,8 +145,7 @@
         android:text="Login"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:backgroundTint="@color/jungleGreen"
-        android:onClick="handleLogin" />
+        app:backgroundTint="@color/jungleGreen"/>
 
 <LinearLayout
     android:layout_width="350dp"
@@ -176,7 +186,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         >
 
@@ -222,7 +232,7 @@
             />
 
         <TextView
-            android:id="@+id/signuptextView"
+            android:id="@+id/register_redirect_text"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
