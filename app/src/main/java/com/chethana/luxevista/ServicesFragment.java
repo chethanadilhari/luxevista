@@ -4,14 +4,22 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -21,7 +29,7 @@ public class ServicesFragment extends Fragment {
     ArrayList<Service> services;
     LinearLayoutManager serviceLinearLayoutManager;
     ServiceAdapter serviceAdapter;
-
+    DatabaseReference servicesDbReference;
 
     public ServicesFragment() {
         // Required empty public constructor
@@ -33,22 +41,41 @@ public class ServicesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_services, container, false);
 
         serviceRecyclerView = view.findViewById(R.id.servicesRecyclerView);
-
         services = new ArrayList<>();
-        services.add(new Service("Spa Treatments", "https://i.ibb.co/y7gL15G/spa-treatments.jpg"));
-        services.add(new Service("Dining Reservations", "https://i.ibb.co/ycQ8ff2J/dining-reservation.jpg"));
-        services.add(new Service("Poolside cabanas", "https://i.ibb.co/wFxnzM6s/poolside-cabanas.jpg"));
-        services.add(new Service("Guided Beach Tours", "https://i.ibb.co/20pY2PBr/guided-beach-tours.jpg"));
-        services.add(new Service("Signature Taste", "https://i.ibb.co/JwhZGPjp/signature-taste.jpg"));
-        services.add(new Service("Sleep Well", "https://i.ibb.co/RGcGcXrV/sleep-well.jpg"));
-
-
         serviceLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-
         serviceAdapter = new ServiceAdapter(services);
-
         serviceRecyclerView.setLayoutManager(serviceLinearLayoutManager);
         serviceRecyclerView.setAdapter(serviceAdapter);
+
+        // Initialize Firebase Database reference
+        servicesDbReference = FirebaseDatabase.getInstance().getReference("services");
+
+        // Fetch Data from Firebase
+
+        ValueEventListener servicesListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                services.clear(); // Clear previous data to avoid duplication
+
+                // Get Service object and use the values to update the UI
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    Service service = itemSnapshot.getValue(Service.class);
+                    if (service != null) {
+                        services.add(service);
+                    }
+                }
+                serviceAdapter.notifyDataSetChanged(); // Update RecyclerView after fetching data
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Failed to load services"+databaseError, Toast.LENGTH_SHORT).show();
+            }
+        };
+        servicesDbReference.addValueEventListener(servicesListener);
+
+//
+
 
         return view;
     }

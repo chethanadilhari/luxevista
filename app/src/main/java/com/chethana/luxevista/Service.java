@@ -5,6 +5,9 @@ public class Service {
     private String name;
     private String imageUrl;
 
+    public Service() {
+    }
+
     public Service(String name, String imageUrl) {
         this.name = name;
         this.imageUrl = imageUrl;

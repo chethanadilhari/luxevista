@@ -9,6 +9,9 @@ public class Room {
         this.imageUrl = imageUrl;
     }
 
+    public Room() {
+    }
+
     public String getName() {
         return name;
     }

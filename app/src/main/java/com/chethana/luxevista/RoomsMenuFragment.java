@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +15,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class RoomsMenuFragment extends Fragment {
 
     RecyclerView roomsMenuRecyclerView;
-    ArrayList<Room> rooms;
+    ArrayList<Room> rooms = new ArrayList<>();
     GridLayoutManager roomGridLayoutManager;
     RoomsMenuAdapter roomsMenuAdapter;
+    DatabaseReference roomsDbReference;
 
 
     public RoomsMenuFragment() {
@@ -34,22 +42,36 @@ public class RoomsMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_rooms_menu, container, false);
 
         roomsMenuRecyclerView = view.findViewById(R.id.roomsMenuRecyclerView);
-
-        rooms = new ArrayList<>();
-        rooms.add(new Room("Standard Room", "https://i.ibb.co/sp9cpTfb/standard-room.jpg"));
-        rooms.add(new Room("Deluxe Room", "https://i.ibb.co/ch8yngRN/deluxe-room.jpg"));
-        rooms.add(new Room("Family Room", "https://i.ibb.co/99GtJH0S/family-room.jpg"));
-        rooms.add(new Room("Room with Sea View", "https://i.ibb.co/Qw4g5XN/sea-view-room.jpg"));
-        rooms.add(new Room("Room with Garden View", "https://i.ibb.co/MkxBbJ7z/garden-view-room.jpg"));
-        rooms.add(new Room("Room with Pool View", "https://i.ibb.co/Csb5GfsR/pool-view-room.jpg"));
-
-
         roomGridLayoutManager = new GridLayoutManager(getActivity(), 2);
-
         roomsMenuAdapter = new RoomsMenuAdapter(rooms);
-
         roomsMenuRecyclerView.setLayoutManager(roomGridLayoutManager);
         roomsMenuRecyclerView.setAdapter(roomsMenuAdapter);
+
+        roomsDbReference = FirebaseDatabase.getInstance().getReference("rooms");
+
+        // Fetch Data from Firebase
+        ValueEventListener roomsListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                rooms.clear(); // Clear previous data to avoid duplication
+
+                // Get Room object and use the values to update the UI
+                for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
+                    Room room = roomSnapshot.getValue(Room.class);
+                    if(room != null) {
+                        rooms.add(room);
+                    }
+                }
+                roomsMenuAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Getting Room failed, log a message
+                Log.w("RoomsMenuFragment", "loadRoom:onCancelled", error.toException());
+            }
+        };
+        roomsDbReference.addValueEventListener(roomsListener);
 
         return view;
     }

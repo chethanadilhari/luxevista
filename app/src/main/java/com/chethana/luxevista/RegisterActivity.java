@@ -1,7 +1,5 @@
 package com.chethana.luxevista;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,17 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Map;
-import java.util.HashMap;
-import android.util.Log;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,7 +32,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Button registerButton;
     private TextView loginRedirectText;
-    FirebaseFirestore fireStore;
+
+    FirebaseDatabase database;
+    DatabaseReference reference;
     String userID;
 
     @Override
@@ -50,7 +47,8 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-       fireStore = FirebaseFirestore.getInstance();
+
+
 
 registerName = findViewById(R.id.register_name);
 registerEmail = findViewById(R.id.register_email);
@@ -63,39 +61,43 @@ loginRedirectText = findViewById(R.id.login_redirect_text_link);
 
             @Override
             public void onClick (View view){
-
                 String email = registerEmail.getText().toString().trim();
                 String password = registerPassword.getText().toString().trim();
                 String name = registerName.getText().toString().trim();
                 String mobile = registerMobile.getText().toString().trim();
 
-
                 if (email.isEmpty()){
                     registerEmail.setError("Email cannot be empty");
                 }
-
+                if(name.isEmpty()){
+                    registerName.setError("Name cannot be empty");
+                }
+                if (mobile.isEmpty()){
+                    registerMobile.setError("Mobile cannot be empty");
+                }
 
                 if (password.isEmpty()){
                     registerPassword.setError("Password cannot be empty");
                 } else{
+                    auth = FirebaseAuth.getInstance();
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                             userID = auth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fireStore.collection("users").document(userID);
-                           Map<String,Object> user = new HashMap<>();
-                           user.put("name", name);
-                           user.put("email", email);
-                           user.put("mobile", mobile);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            database = FirebaseDatabase.getInstance();
+                            reference = database.getReference("users");
+                            UserProfileClass userProfileClass = new UserProfileClass(name, mobile);
+                            reference.child(userID).setValue(userProfileClass).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: user profile is created for " + userID);
+                                    Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                 }
                             });
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+
+
                         } else {
                             Toast.makeText(RegisterActivity.this, "Registration Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
