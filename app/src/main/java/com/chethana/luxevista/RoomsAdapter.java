@@ -40,6 +40,11 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
                 .load(room.getImageUrl())
                 .apply(new RequestOptions().placeholder(R.drawable.home_bg)) // Add placeholder image
                 .into(holder.roomImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            // Handle click event
+
+        });
     }
 
     @Override

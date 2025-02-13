@@ -1,5 +1,6 @@
 package com.chethana.luxevista;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,17 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
                 .load(service.getImageUrl())
                 .apply(new RequestOptions().placeholder(R.drawable.home_bg)) // Add placeholder image
                 .into(holder.serviceImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            // Open SubServiceDetails fragment
+            Intent intent = new Intent(holder.itemView.getContext(), ServiceActivity.class);
+            intent.putExtra("serviceId", service.getKey());
+            intent.putExtra("serviceName", service.getName());
+            intent.putExtra("serviceImageUrl", service.getImageUrl());
+            intent.putExtra("serviceDescription", service.getDescription());
+
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -51,10 +63,13 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         TextView serviceName;
         ImageView serviceImage;
 
+        TextView serviceDescription;
+
         ServiceViewHolder(@NonNull View itemView) {
             super(itemView);
             serviceName = itemView.findViewById(R.id.serviceName);
             serviceImage = itemView.findViewById(R.id.serviceImage);
+            serviceDescription = itemView.findViewById(R.id.serviceDescription);
         }
     }
 }

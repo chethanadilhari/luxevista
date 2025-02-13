@@ -59,6 +59,7 @@ public class ServiceMenuFragment extends Fragment {
                 for (DataSnapshot serviceSnapshot : snapshot.getChildren()) {
                     Service service = serviceSnapshot.getValue(Service.class);
                     if (service !=null){
+                        service.setKey(serviceSnapshot.getKey());
                         services.add(service);
                     }
 

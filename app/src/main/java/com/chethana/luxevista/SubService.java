@@ -1,28 +1,30 @@
 package com.chethana.luxevista;
 
-public class Service {
+public class SubService {
 
-    private String key;
     private String name;
     private String imageUrl;
+
     private String description;
 
-    public Service() {
+    private String price;
+
+    public SubService() {
     }
 
-    public Service(String key, String name, String imageUrl, String description) {
+    public SubService(String name, String imageUrl, String description, String price) {
         this.name = name;
         this.imageUrl = imageUrl;
-        this.key = key;
         this.description = description;
+        this.price = price;
     }
 
-    public String getKey() {
-        return key;
+    public String getName() {
+        return name;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -33,8 +35,12 @@ public class Service {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getImageUrl() {
@@ -42,3 +48,5 @@ public class Service {
     }
 
 }
+
+

@@ -61,6 +61,7 @@ public class ServicesFragment extends Fragment {
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     Service service = itemSnapshot.getValue(Service.class);
                     if (service != null) {
+                        service.setKey(itemSnapshot.getKey());
                         services.add(service);
                     }
                 }

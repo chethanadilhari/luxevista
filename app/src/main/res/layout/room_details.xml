@@ -15,7 +15,7 @@
         android:layout_height="200dp">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/roomImageDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -23,15 +23,22 @@
             android:src="@drawable/home_bg"
             />
 
+        <View
+            android:layout_width="30dp"
+            android:layout_height="7dp"
+            android:layout_alignBottom="@id/roomImageDetails"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="19dp"
+            android:background="@color/whiteOpacity" />
+
 
     </RelativeLayout>
-
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGrey"
-        android:shapeAppearance="@style/TopCornerRound"
         tools:context=".ServiceMenuFragment">
 
         <LinearLayout
@@ -164,6 +171,8 @@ Lipton tea set, bathroom amenity set, minibar, and fast Wi-Fi are available"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/darkGrey">
 
                 <TextView
@@ -181,14 +190,22 @@ Lipton tea set, bathroom amenity set, minibar, and fast Wi-Fi are available"
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginHorizontal="40dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginHorizontal="60dp"
                         android:letterSpacing="0.09"
-                        android:text="1 bedroom, bathroom, balcony, 1 Smart TV, Nespresso coffee machine with 4 daily capules,
-Lipton tea set, bathroom amenity set, minibar, and fast Wi-Fi are available"
+                        android:text="• Comfortable bed
+    • Fresh linens and pillows
+    • Wardrobe or closet
+    • Bedside table with lamp
+    • Desk and chair
+    • Private bathroom with shower or bathtub
+    • Towels and toiletries
+    • Hairdryer
+    • Mirror
+    • Flat-screen TV with cable/satellite channels"
                         android:textColor="@color/darkGreen"
                         android:textSize="12sp"/>
 
