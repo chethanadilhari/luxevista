@@ -76,7 +76,7 @@ public class ServiceActivity extends AppCompatActivity {
         ValueEventListener subServicesListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                subServices.clear(); // Clear previous data to avoid duplication
+                subServices.clear(); // Clear previous roomdata to avoid duplication
 
                 // Get Service object and use the values to update the UI
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {

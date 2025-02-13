@@ -1,5 +1,6 @@
 package com.chethana.luxevista;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,16 @@ public class RoomsMenuAdapter extends RecyclerView.Adapter<RoomsMenuAdapter.Room
                 .load(room.getImageUrl())
                 .apply(new RequestOptions().placeholder(R.drawable.home_bg)) // Add placeholder image
                 .into(holder.roomImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            // Handle click event
+             Intent intent = new Intent(holder.itemView.getContext(), RoomsActivity.class);
+             intent.putExtra("roomId", room.getKey());
+             intent.putExtra("roomName", room.getName());
+             intent.putExtra("roomImageUrl", room.getImageUrl());
+             intent.putExtra("roomDescription", room.getDescription());
+             holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override

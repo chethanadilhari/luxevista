@@ -69,9 +69,10 @@ public class ExploreFragment extends Fragment {
             public void onDataChange(DataSnapshot snapshot) {
                 rooms.clear(); // Clear previous data to avoid duplication
                 // Get Room object and use the values to update the UI
-                for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
-                    Room room = roomSnapshot.getValue(Room.class);
-                    if(room != null) {
+                for (DataSnapshot  itemSnapshot : snapshot.getChildren()) {
+                    Room room =  itemSnapshot.getValue(Room.class);
+                    if (room !=null){
+                        room.setKey( itemSnapshot.getKey());
                         rooms.add(room);
                     }
                 }
@@ -91,9 +92,10 @@ public class ExploreFragment extends Fragment {
             public void onDataChange(DataSnapshot snapshot) {
                 locations.clear(); // Clear previous data to avoid duplication
                 // Get Location object and use the values to update the UI
-                for (DataSnapshot locationSnapshot : snapshot.getChildren()) {
-                    Location location = locationSnapshot.getValue(Location.class);
-                    if(location != null) {
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    Location location = itemSnapshot.getValue(Location.class);
+                    if (location !=null){
+                        location.setKey(itemSnapshot.getKey());
                         locations.add(location);
                     }
                 }

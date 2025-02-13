@@ -59,6 +59,7 @@ public class RoomsMenuFragment extends Fragment {
                 for (DataSnapshot roomSnapshot : snapshot.getChildren()) {
                     Room room = roomSnapshot.getValue(Room.class);
                     if(room != null) {
+                        room.setKey(roomSnapshot.getKey());
                         rooms.add(room);
                     }
                 }
