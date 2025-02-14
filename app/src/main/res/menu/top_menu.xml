@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="Home"
+            app:showAsAction="never"
+            android:icon="@drawable/home_icon"
+            />
+        <item
+            android:id="@+id/rooms"
+            android:title="Rooms"
+            app:showAsAction="never"
+            android:icon="@drawable/room_icon"
+            />
+        <item
+            android:id="@+id/services"
+            android:title="Services"
+            app:showAsAction="never"
+            android:icon="@drawable/service_icon"
+            />
+        <item
+            android:id="@+id/bookings"
+            android:title="Bookings"
+            app:showAsAction="never"
+            android:icon="@drawable/calendar_icon"
+            />
+    </group>
+
+        <item android:title="communication">
+            <menu>
+                <group android:checkableBehavior="single">
+
+            <item
+                android:id="@+id/profile"
+                android:title="Profile"
+                app:showAsAction="never"
+                android:icon="@drawable/user_profile_icon"
+                />
+        <item
+            android:id="@+id/share"
+            android:title="Share"
+            app:showAsAction="never"
+            android:icon="@drawable/share_icon"
+            />
+                </group>
+            </menu>
+        </item>
+
+
+
+        <item android:title="settings">
+            <menu>
+                <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/settings"
+        android:title="Settings"
+        app:showAsAction="never"
+        android:icon="@drawable/settings_icon"
+        />
+            <item
+                android:id="@+id/info"
+                android:title="Info"
+                app:showAsAction="never"
+                android:icon="@drawable/info_icon"
+                />
+                </group>
+            </menu>
+        </item>
+
+
+
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"
+                app:showAsAction="never"
+                android:icon="@drawable/exit_icon"
+                />
+
+</menu>

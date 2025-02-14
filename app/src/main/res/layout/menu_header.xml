@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="@color/darkGreen"
+    android:gravity="center"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/vertical_logo"
+    />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="www.luxevista.com"
+        android:letterSpacing="0.09"
+        android:textColor="@color/whiteOpacity"
+        android:textSize="16dp"
+        />
+
+</LinearLayout>

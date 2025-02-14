@@ -3,22 +3,36 @@ package com.chethana.luxevista;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import androidx.appcompat.widget.Toolbar;
 
 import com.chethana.luxevista.databinding.ActivityHomeBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ActivityHomeBinding binding;
     private FirebaseAuth auth;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +40,25 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        /*Hooks*/
+        drawerLayout = findViewById(R.id.homeScreen);
+        navigationView = findViewById(R.id.navigationView);
+        toolbar = findViewById(R.id.toolBar);
+
+        setSupportActionBar(toolbar);
+
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+
+        ImageView menuIcon = findViewById(R.id.menuIcon);
+        menuIcon.setOnClickListener(v -> drawerLayout.open());
 
         auth = FirebaseAuth.getInstance();
 
@@ -59,7 +92,10 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
             return true;
+
         });
+
+
 
         // initial stage loading
         replaceFragment(new ExploreFragment());
@@ -84,6 +120,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -106,5 +143,19 @@ public class HomeActivity extends AppCompatActivity {
 
         button.setTextColor(getResources().getColor(R.color.white));
         button.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.jungleGreen));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
     }
 }

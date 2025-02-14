@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Custom Button Style -->
     <style name="RoundedButton" parent="Widget.MaterialComponents.Button">
         <item name="android:background">@drawable/rounded_button</item> <!-- Use custom background -->
