@@ -88,7 +88,7 @@ loginRedirectText = findViewById(R.id.login_redirect_text_link);
                             userID = auth.getCurrentUser().getUid();
                             database = FirebaseDatabase.getInstance();
                             reference = database.getReference("users");
-                            UserProfileClass userProfileClass = new UserProfileClass(name, mobile);
+                            UserProfileClass userProfileClass = new UserProfileClass(name, mobile,null);
                             reference.child(userID).setValue(userProfileClass).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

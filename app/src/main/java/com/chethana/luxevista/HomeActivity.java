@@ -3,15 +3,11 @@ package com.chethana.luxevista;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.chethana.luxevista.databinding.ActivityHomeBinding;
@@ -48,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         setSupportActionBar(toolbar);
 
+
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -55,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
 
-
+navigationView.setCheckedItem(R.id.home);
 
         ImageView menuIcon = findViewById(R.id.menuIcon);
         menuIcon.setOnClickListener(v -> drawerLayout.open());
@@ -86,9 +85,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.bookings:
                     homeNavButtons.setVisibility(LinearLayout.GONE);
                     replaceFragment(new reservationFragment());
-                    auth.signOut();
-                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-                    finish();
                     break;
             }
             return true;
@@ -156,6 +152,40 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                break;
+
+            case R.id.rooms:
+                replaceFragment(new ServicesFragment());
+                selectedButton(findViewById(R.id.servicesButton));
+                break;
+
+            case R.id.services:
+                startActivity(new Intent(HomeActivity.this, ServiceMenuFragment.class));
+                break;
+
+                case R.id.bookings:
+                startActivity(new Intent(HomeActivity.this, BookingDetailsActivity.class));
+                break;
+
+            case R.id.profile:
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                break;
+
+            case R.id.share:
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.logout:
+                auth.signOut();
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                finish();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+
     }
 }

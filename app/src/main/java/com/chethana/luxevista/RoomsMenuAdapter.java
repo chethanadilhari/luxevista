@@ -49,6 +49,7 @@ public class RoomsMenuAdapter extends RecyclerView.Adapter<RoomsMenuAdapter.Room
              intent.putExtra("roomName", room.getName());
              intent.putExtra("roomImageUrl", room.getImageUrl());
              intent.putExtra("roomDescription", room.getDescription());
+             intent.putExtra("roomPrice", room.getPrice());
              holder.itemView.getContext().startActivity(intent);
         });
     }

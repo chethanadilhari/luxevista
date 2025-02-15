@@ -39,12 +39,27 @@
                 app:showAsAction="never"
                 android:icon="@drawable/user_profile_icon"
                 />
+
+                    <item
+                        android:id="@+id/notifications"
+                        android:title="Notifications"
+                        app:showAsAction="never"
+                        android:icon="@drawable/notifications_icon"
+                        />
         <item
             android:id="@+id/share"
             android:title="Share"
             app:showAsAction="never"
             android:icon="@drawable/share_icon"
             />
+
+                    <item
+                        android:id="@+id/info"
+                        android:title="Info"
+                        app:showAsAction="never"
+                        android:icon="@drawable/info_icon"
+                        />
+
                 </group>
             </menu>
         </item>
@@ -60,12 +75,7 @@
         app:showAsAction="never"
         android:icon="@drawable/settings_icon"
         />
-            <item
-                android:id="@+id/info"
-                android:title="Info"
-                app:showAsAction="never"
-                android:icon="@drawable/info_icon"
-                />
+
                 </group>
             </menu>
         </item>
@@ -76,7 +86,7 @@
                 android:id="@+id/logout"
                 android:title="Logout"
                 app:showAsAction="never"
-                android:icon="@drawable/exit_icon"
+                android:icon="@drawable/logout_icon"
                 />
 
 </menu>

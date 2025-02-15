@@ -165,6 +165,7 @@ Lipton tea set, bathroom amenity set, minibar, and fast Wi-Fi are available"
                         />
 
                     <TextView
+                        android:id="@+id/roomMaxPax"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2 Adults"/>
@@ -219,7 +220,7 @@ Lipton tea set, bathroom amenity set, minibar, and fast Wi-Fi are available"
             </LinearLayout>
 
             <Button
-                android:id="@+id/locationButton"
+                android:id="@+id/btnBookNow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"

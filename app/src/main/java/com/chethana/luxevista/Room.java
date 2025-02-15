@@ -8,11 +8,17 @@ public class Room {
 
     private String description;
 
-    public Room(String key, String name, String imageUrl, String description) {
+    private Long price;
+
+    private int maxPax;
+
+    public Room(String key, String name, String imageUrl, String description, Long price, int maxPax) {
         this.key = key;
         this.name = name;
         this.imageUrl = imageUrl;
         this.description = description;
+        this.price = price;
+        this.maxPax=maxPax;
     }
 
     public Room() {
@@ -22,12 +28,24 @@ public class Room {
         return key;
     }
 
+    public int getMaxPax() {
+        return maxPax;
+    }
+
+    public void setMaxPax(int maxPax) {
+        this.maxPax = maxPax;
+    }
+
     public void setKey(String key) {
         this.key = key;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getPrice() {
+        return price;
     }
 
     public void setImageUrl(String imageUrl) {

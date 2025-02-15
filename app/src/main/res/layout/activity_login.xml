@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="@color/darkGreen"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:fontFamily="@font/custom_font_inter"
             >
@@ -97,7 +97,7 @@
                 android:inputType="textPassword"
                 android:background="@drawable/input_field"
                 android:textColor="@color/darkGreen"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/custom_font_inter"/>
         </com.google.android.material.textfield.TextInputLayout>

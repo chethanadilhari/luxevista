@@ -45,11 +45,14 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         holder.itemView.setOnClickListener(v -> {
             // Handle click event
 
-            Intent intent = new Intent(holder.itemView.getContext(), ServiceActivity.class);
+            Intent intent = new Intent(holder.itemView.getContext(), RoomsActivity.class);
             intent.putExtra("roomId", room.getKey());
             intent.putExtra("roomName", room.getName());
             intent.putExtra("roomImageUrl", room.getImageUrl());
             intent.putExtra("roomDescription", room.getDescription());
+            intent.putExtra("roomMaxPax", room.getDescription());
+            intent.putExtra("roomPrice", room.getPrice());
+            intent.putExtra("roomMaxPax",room.getMaxPax());
 
             holder.itemView.getContext().startActivity(intent);
         });
@@ -65,12 +68,14 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomViewHold
         ImageView roomImage;
 
         TextView roomDescription;
+        TextView roomMaxPax;
 
         RoomViewHolder(@NonNull View itemView) {
             super(itemView);
             roomName = itemView.findViewById(R.id.roomName);
             roomImage = itemView.findViewById(R.id.roomImage);
             roomDescription = itemView.findViewById(R.id.roomDescription);
+            roomMaxPax = itemView.findViewById(R.id.roomMaxPax);
         }
     }
 }
