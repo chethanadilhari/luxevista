@@ -9,6 +9,8 @@ public class SubService {
 
     private String price;
 
+    private String duration;
+
     public SubService() {
     }
 
@@ -17,6 +19,7 @@ public class SubService {
         this.imageUrl = imageUrl;
         this.description = description;
         this.price = price;
+        this.duration =duration;
     }
 
     public String getName() {
@@ -25,6 +28,14 @@ public class SubService {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     public String getDescription() {

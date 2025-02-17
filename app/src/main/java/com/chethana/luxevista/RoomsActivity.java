@@ -3,6 +3,7 @@ package com.chethana.luxevista;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,9 @@ public class RoomsActivity extends AppCompatActivity {
         Glide.with(this)
             .load(roomImageUrl)
             .into(roomImage);
+
+        ImageView backButton = findViewById(R.id.backIcon);
+        backButton.setOnClickListener(v -> finish()); // Closes the current activity
 
         Button bookButton = findViewById(R.id.btnBookNow);
         bookButton.setOnClickListener(v -> {

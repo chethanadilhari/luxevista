@@ -30,7 +30,7 @@ public class BookingDetailsActivity extends AppCompatActivity {
 
     EditText checkIn,checkOut, name, email, mobile,noOfGuests;
     TextView roomCount, totalPriceTextView, roomName;
-    ImageView calIconCheckIn,calIconCheckOut,roomImage;
+    ImageView calIconCheckIn,calIconCheckOut,roomImage,backButton;
     FirebaseAuth mAuth;
     DatabaseReference userRef,bookingRef,roomRef;
     Button btnIncrease,btnDecrease, btnConfirm, btnCancel;
@@ -167,6 +167,9 @@ public class BookingDetailsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        ImageView backButton = findViewById(R.id.roomBackIcon);
+        backButton.setOnClickListener(v -> finish()); // Closes the current activity
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override

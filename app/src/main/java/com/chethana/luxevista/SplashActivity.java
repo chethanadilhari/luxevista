@@ -16,21 +16,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.splashScreen), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        new Handler().postDelayed(() -> {
-           startActivity(new Intent(SplashActivity.this, MainActivity.class));
-
-                ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.splashScreen), (v, insets) -> {
-                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                    return insets;
-                });
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Start the MainActivity
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();  // Finish SplashActivity so the user can't navigate back to it
+            }
         }, 3000);
     }
 }

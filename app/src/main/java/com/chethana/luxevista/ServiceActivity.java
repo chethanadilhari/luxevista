@@ -2,6 +2,7 @@ package com.chethana.luxevista;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,9 @@ public class ServiceActivity extends AppCompatActivity {
         // Set Values
         serviceName.setText(serviceNameText);
         serviceDescription.setText(serviceDescriptionText);
+
+        ImageView backButton = findViewById(R.id.backIcon);
+        backButton.setOnClickListener(v -> finish());
 
         Glide.with(this)
                 .load(serviceImageUrl)

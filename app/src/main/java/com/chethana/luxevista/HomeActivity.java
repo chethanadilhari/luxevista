@@ -167,7 +167,7 @@ navigationView.setCheckedItem(R.id.home);
                 break;
 
                 case R.id.bookings:
-                startActivity(new Intent(HomeActivity.this, BookingDetailsActivity.class));
+                startActivity(new Intent(HomeActivity.this, ReservationDetailsActivity.class));
                 break;
 
             case R.id.profile:

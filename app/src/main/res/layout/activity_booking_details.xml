@@ -20,6 +20,17 @@
             app:shapeAppearance="@style/BottomCornerRound"
             android:src="@color/darkGreen"
             />
+        <ImageView
+            android:id="@+id/roomBackIcon"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="?android:attr/actionBarSize"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/back_icon"
+            />
+
 
 
         <TextView
@@ -60,7 +71,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp">
 
 
         <LinearLayout
@@ -331,31 +343,34 @@
                     />
             </LinearLayout>
 <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/jungleGreen"
+    android:layout_marginTop="20dp"
+    android:paddingVertical="10dp"
+android:gravity="center"
+    >
             <TextView
                 android:id="@+id/totalAmountLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="@font/custom_font_inter"
                 android:letterSpacing="0.05"
                 android:text="Total Amount: $"
-                android:textColor="@color/darkGreen"
-                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/totalAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:fontFamily="@font/custom_font_inter"
                 android:letterSpacing="0.05"
                 android:text="0.00"
-                android:textColor="@color/darkGreen"
-                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
 </LinearLayout>

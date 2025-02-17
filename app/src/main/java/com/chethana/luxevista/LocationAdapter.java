@@ -1,5 +1,6 @@
 package com.chethana.luxevista;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,15 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
                 .load(location.getImageUrl())
                 .apply(new RequestOptions().placeholder(R.drawable.home_bg)) // Add placeholder image
                 .into(holder.locationImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            // Create an Intent to pass data to the detailed page (Activity)
+            Intent intent = new Intent(holder.itemView.getContext(), LocationDetailsActivity.class);
+            intent.putExtra("locationName", location.getName());
+            intent.putExtra("locationDescription", location.getDescription());
+            intent.putExtra("locationImage", location.getImageUrl());
+            holder.itemView.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -48,13 +58,15 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     }
 
     static class LocationViewHolder extends RecyclerView.ViewHolder {
-        TextView locationName;
+        TextView locationName,locationDescription;
         ImageView locationImage;
+
 
         LocationViewHolder(@NonNull View itemView) {
             super(itemView);
             locationName = itemView.findViewById(R.id.locationName);
             locationImage = itemView.findViewById(R.id.locationImage);
+            locationDescription=itemView.findViewById(R.id.locationDescription);
         }
     }
 }

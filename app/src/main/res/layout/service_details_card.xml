@@ -71,6 +71,18 @@
                     android:layout_height="wrap_content"
                     android:letterSpacing="0.09"
                     android:padding="10dp"
+                    android:text="Price: $50"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkGreen"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subServiceDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.09"
+                    android:padding="10dp"
                     android:text="Price: $50/1 hr"
                     android:textAlignment="center"
                     android:textColor="@color/darkGreen"
@@ -82,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="50dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_green_button"
