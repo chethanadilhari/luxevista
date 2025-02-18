@@ -1,3 +1,5 @@
+
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -42,23 +44,24 @@
                <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:orientation="horizontal">
+                   android:orientation="horizontal"
+                   android:paddingLeft="10dp"
+                   android:paddingVertical="5dp">
 
-                <TextView
+                   <TextView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:letterSpacing="0.08"
-                    android:padding="10dp"
-                    android:text="Room Type:"
-                    android:textColor="@color/darkGreen"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentTop="true"
+                       android:layout_centerInParent="true"
+                       android:layout_marginTop="10dp"
+                       android:letterSpacing="0.08"
+                       android:text="Room Type:"
+                       android:textColor="@color/darkGreen"
+                       android:textSize="12sp"
+                       android:textStyle="bold" />
 
-                <TextView
+                   <TextView
                     android:id="@+id/roomType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +69,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
                     android:letterSpacing="0.08"
-                    android:padding="10dp"
+                    android:paddingLeft="10dp"
                     android:text="Standard Room"
                     android:textColor="@color/darkGreen"
                     android:textSize="12sp"
@@ -75,8 +78,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
 
                     <TextView
 
@@ -84,10 +89,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginTop="10dp"
                         android:letterSpacing="0.08"
-                        android:padding="10dp"
-                        android:text="Room Type:"
+                        android:text="Check-In-Date:"
                         android:textColor="@color/darkGreen"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -98,16 +101,180 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginTop="10dp"
                         android:letterSpacing="0.08"
-                        android:padding="10dp"
-                        android:text="Standard Room"
+                        android:paddingLeft="10dp"
+                        android:text="22-05-2025"
                         android:textColor="@color/darkGreen"
                         android:textSize="12sp"
                         />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
 
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.05"
+                        android:text="Check-Out-Date:"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/checkOutDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:paddingLeft="10dp"
+                        android:text="24-05-2025"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="5dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:paddingLeft="10dp"
+                        android:text="Room Price/1 Night:"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/roomPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:text="$50"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:text="Max Pax Per Room: "
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/maxPax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:paddingLeft="10dp"
+                        android:text="02"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="5dp">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:paddingLeft="10dp"
+                        android:text="No of Rooms: "
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/roomCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:text="02"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/darkGreen"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="5dp"
+                    android:background="@color/jungleGreen">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:padding="10dp"
+                        android:text="Total Price:"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/totalPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:letterSpacing="0.08"
+                        android:text="$200"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 

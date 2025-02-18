@@ -84,7 +84,7 @@ navigationView.setCheckedItem(R.id.home);
                     break;
                 case R.id.bookings:
                     homeNavButtons.setVisibility(LinearLayout.GONE);
-                    replaceFragment(new reservationFragment());
+                    replaceFragment(new BookingFragment());
                     break;
             }
             return true;
@@ -152,40 +152,60 @@ navigationView.setCheckedItem(R.id.home);
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment selectedFragment = null;
+
         switch (item.getItemId()) {
             case R.id.home:
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                selectedFragment = new ExploreFragment();
                 break;
 
             case R.id.rooms:
-                replaceFragment(new ServicesFragment());
-                selectedButton(findViewById(R.id.servicesButton));
+                selectedFragment = new RoomsMenuFragment();
                 break;
 
             case R.id.services:
-                startActivity(new Intent(HomeActivity.this, ServiceMenuFragment.class));
+                selectedFragment = new ServiceMenuFragment();
                 break;
 
-                case R.id.bookings:
-                startActivity(new Intent(HomeActivity.this, ReservationDetailsActivity.class));
+            case R.id.bookings:
+                selectedFragment = new BookingFragment();
+                break;
+
+            case R.id.info:
+                selectedFragment = new reservationFragment();
                 break;
 
             case R.id.profile:
-                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-                break;
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class)); // For Profile Activity
+                return true;
+
+            case R.id.notifications:
+                startActivity(new Intent(HomeActivity.this, NotificationsActivity.class)); // For Notifications Activity
+                return true;
 
             case R.id.share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
-                break;
+                return true;
+
+            case R.id.settings:
+                startActivity(new Intent(HomeActivity.this,SettingsActivity.class)); // For Notifications Activity
+                return true;
 
             case R.id.logout:
+                FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.signOut();
                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                 finish();
-                break;
+                return true;
         }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
 
+        // If a fragment was selected, replace the fragment container
+        if (selectedFragment != null) {
+            replaceFragment(selectedFragment);
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START); // Close the drawer after selection
+        return true;
     }
+
 }

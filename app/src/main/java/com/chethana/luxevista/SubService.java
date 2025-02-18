@@ -7,14 +7,14 @@ public class SubService {
 
     private String description;
 
-    private String price;
+    private Long price;
 
     private String duration;
 
     public SubService() {
     }
 
-    public SubService(String name, String imageUrl, String description, String price) {
+    public SubService(String name, String imageUrl, String description, Long price, String duration) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.description = description;
@@ -46,11 +46,11 @@ public class SubService {
         this.description = description;
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
